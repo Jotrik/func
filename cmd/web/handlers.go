@@ -30,13 +30,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//func chat(w http.ResponseWriter, r *http.Request) {
-//	tmpl, _ := template.ParseFiles("./ui/html/chat.html")
-//	if err := tmpl.Execute(w, nil); err != nil {
-//		http.Error(w, err.Error(), http.StatusInternalServerError)
-//	}
-//}
-
 func auth(rw http.ResponseWriter, rq *http.Request) {
 	if rq.Method == http.MethodPost {
 		err := rq.ParseForm()
@@ -53,6 +46,6 @@ func auth(rw http.ResponseWriter, rq *http.Request) {
 			NewUser(db, name, pas)
 			log.Print("Регистрация прошла успешно")
 		}
-		//http.ServeFile(rw, rq, "./ui/html/main.html")
+
 	}
 }

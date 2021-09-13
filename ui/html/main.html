@@ -74,12 +74,29 @@
     </div>
     <div class="column2">
       <h2>Чат</h2>
+      <input id="input" type="text" />
+      <button onclick="send()">Send</button>
+      <pre id="output"></pre>
+      <script>
+        var input = document.getElementById("input");
+        var output = document.getElementById("output");
+        var socket = new WebSocket("ws://localhost:8000/ws");
+
+        socket.onopen = function () {
+          output.innerHTML += "Status: Connected\n";
+        };
+
+        socket.onmessage = function (e) {
+          output.innerHTML += "Server: " + e.data + "\n";
+        };
+
+        function send() {
+          socket.send(input.value);
+          input.value = "";
+          console.log(socket.CONNECTING)
+        }
+      </script>
       <div class="Chatset">
-        <form name="message" action="">
-          <p>Сообщение:</p>
-          <input name="usermsg" type="text" id="usermsg" size="63" />
-          <input name="submitmsg" type="submit"  id="submitmsg" value="Send" />
-        </form>
         <div id="gallery">
           <div class="photos">
             <img src="https://stihi.ru/pics/2020/01/03/6020.jpg" class="Showed">
@@ -102,7 +119,15 @@
     </div>
     <div class="column3">
       <h2> Дополнительно</h2>
-      <p></p>
+      <p>
+      <form method="POST" action="/auth">
+        <label>Login</label><br>
+        <input type="text" name="name" /><br><br>
+        <label>Password</label><br>
+        <input type="text" name="pas" /><br><br>
+        <input type="submit" value="Log in" />
+      </form>
+      </p>
     </div>
   </div>
   <div class="Footer">

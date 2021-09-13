@@ -10,7 +10,7 @@ import (
 
 type User struct {
 	id       int
-	name     string //`json:"name"`
+	name     string
 	password string
 }
 

@@ -10,9 +10,6 @@ var db *sql.DB
 
 func main() {
 
-	//addr := flag.String("addr", ":4000", "Сетевой адрес HTTP")
-	//flag.Parse()
-
 	db = Db_connect()
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
@@ -22,7 +19,7 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./ui/static"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	log.Println("http://127.0.0.1:4000\n")
-	err := http.ListenAndServe(":4000", mux)
+	log.Println("http://127.0.0.1:8000\n")
+	err := http.ListenAndServe(":8000", mux)
 	log.Fatal(err)
 }

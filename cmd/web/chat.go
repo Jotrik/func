@@ -6,8 +6,6 @@ import (
 	"net/http"
 )
 
-var users = make(map[ConnectUser]int)
-
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
@@ -24,11 +22,11 @@ func newConnectUser(ws *websocket.Conn, clientIP string) *ConnectUser {
 		ClientIP:  clientIP,
 	}
 }
+
+var users = make(map[ConnectUser]int)
+
 func WebsocketHandler(w http.ResponseWriter, r *http.Request) {
-	ws, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println("Ты прав", err.Error())
-	}
+	ws, _ := upgrader.Upgrade(w, r, nil)
 
 	defer func() {
 		if err := ws.Close(); err != nil {
