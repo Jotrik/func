@@ -19,7 +19,7 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./ui/static"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	log.Println("http://127.0.0.1:8000\n")
-	err := http.ListenAndServe(":8000", mux)
+	log.Println("localhost:8000\n")
+	err := http.ListenAndServe(":80", mux)
 	log.Fatal(err)
 }

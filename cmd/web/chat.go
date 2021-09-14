@@ -27,6 +27,7 @@ var users = make(map[ConnectUser]int)
 
 func WebsocketHandler(w http.ResponseWriter, r *http.Request) {
 	ws, _ := upgrader.Upgrade(w, r, nil)
+	log.Println("ЕСТЬ КОНТАКТ!!!!")
 
 	defer func() {
 		if err := ws.Close(); err != nil {
@@ -36,6 +37,8 @@ func WebsocketHandler(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("Client connected:", ws.RemoteAddr().String())
 	var socketClient *ConnectUser = newConnectUser(ws, ws.RemoteAddr().String())
+	log.Println("ЕСТЬ Соединение!!!!")
+
 	users[*socketClient] = 0
 	log.Println("Number client connected ...", len(users))
 
