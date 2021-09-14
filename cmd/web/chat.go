@@ -12,8 +12,9 @@ var upgrader = websocket.Upgrader{
 }
 
 type ConnectUser struct {
-	Websocket *websocket.Conn
-	ClientIP  string
+	Websocket  *websocket.Conn
+	ClientIP   string
+	ClientName string
 }
 
 func newConnectUser(ws *websocket.Conn, clientIP string) *ConnectUser {

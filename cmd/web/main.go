@@ -20,6 +20,6 @@ func main() {
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	log.Println("localhost:8000\n")
-	err := http.ListenAndServe(":8000", mux) //:80
+	err := http.ListenAndServe(":80", mux) //:80
 	log.Fatal(err)
 }
