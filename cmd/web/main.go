@@ -15,13 +15,17 @@ func main() {
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/auth", auth)
 	mux.HandleFunc("/authPage", authPage)
-	mux.HandleFunc("/backLink", backLink)
 	mux.HandleFunc("/ws", WebsocketHandler)
+
+	mux.HandleFunc("/backLink", backLink)
+	mux.HandleFunc("/personalArea", personalArea)
+	mux.HandleFunc("/about", about)
+	mux.HandleFunc("/contacts", contacts)
+	mux.HandleFunc("/price", price)
 
 	fileServer := http.FileServer(http.Dir("./ui/static"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
-	log.Println("localhost:8000\n")
 	err := http.ListenAndServe(":80", mux) //:80
 	log.Fatal(err)
 }
