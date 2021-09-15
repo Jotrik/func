@@ -14,6 +14,8 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/auth", auth)
+	mux.HandleFunc("/authPage", authPage)
+	mux.HandleFunc("/backLink", backLink)
 	mux.HandleFunc("/ws", WebsocketHandler)
 
 	fileServer := http.FileServer(http.Dir("./ui/static"))

@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <div class="flex-wrapper">
-    <a href="contact.html" class="one">
+    <a href="/backLink" class="one">
       <div class="overlay">
         <div class="overlay-inner">
           <h2>
@@ -80,7 +80,7 @@
       <script>
         var input = document.getElementById("input");
         var output = document.getElementById("output");
-        var socket = new WebSocket("ws://localhost:8000/ws"); // www.funclicker.online:80
+        var socket = new WebSocket("ws://funclicker.online/ws"); // ws://funclicker.online/ws //localhost:8000
 
         socket.onopen = function () {
           output.innerHTML += "Status: Connected\n";
@@ -130,9 +130,6 @@
       </p>
     </div>
   </div>
-  <span class="Footer">
-    Авторы:
-  </span>
 </div>
 </body>
 </html>
